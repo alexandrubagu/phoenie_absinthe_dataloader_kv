@@ -1,26 +1,17 @@
 defmodule PhoenixAbsintheDataloaderKvWeb.Router do
   use PhoenixAbsintheDataloaderKvWeb, :router
 
-  pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
-  end
-
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/", PhoenixAbsintheDataloaderKvWeb do
-    pipe_through :browser
+  forward "/graphiql", Absinthe.Plug.GraphiQL,
+    schema: PhoenixAbsintheDataloaderKvWeb.Schema,
+    json_codec: Jason,
+    default_url: "/api"
 
-    get "/", PageController, :index
+  scope "/api" do
+    pipe_through :api
+    forward "/", Absinthe.Plug, schema: PhoenixAbsintheDataloaderKvWeb.Schema, json_codec: Jason
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", PhoenixAbsintheDataloaderKvWeb do
-  #   pipe_through :api
-  # end
 end

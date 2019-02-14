@@ -1,4 +1,4 @@
-defmodule DataloadKv.Repo.Migrations.CreateWebpages do
+defmodule PhoenixAbsintheDataloaderKv.Repo.Migrations.CreateWebpages do
   use Ecto.Migration
 
   def change do

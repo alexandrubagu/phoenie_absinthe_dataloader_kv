@@ -10,8 +10,8 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias DataloadKv.Webpage
-alias DataloadKv.Link
+alias PhoenixAbsintheDataloaderKv.Webpage
+alias PhoenixAbsintheDataloaderKv.Link
 
 max = %Webpage{
   name: "max.info",
@@ -55,5 +55,5 @@ joe = %Webpage{
   ]
 }
 
-DataloadKv.Repo.insert!(joe)
-DataloadKv.Repo.insert!(max)
+PhoenixAbsintheDataloaderKv.Repo.insert!(joe)
+PhoenixAbsintheDataloaderKv.Repo.insert!(max)
