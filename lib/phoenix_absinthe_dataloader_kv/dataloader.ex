@@ -12,10 +12,9 @@ defmodule PhoenixAbsintheDataloaderKv.Dataloader do
       webpages
       |> Enum.map(& &1.id)
       |> fetch_links
-      |> IO.inspect()
 
     Enum.reduce(webpages, %{}, fn webpage, acc ->
-      Map.put(acc, webpage, batches[webpage.id])
+      Map.put(acc, webpage, {:error, "my_reason"})
     end)
   end
 
